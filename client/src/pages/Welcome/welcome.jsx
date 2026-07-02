@@ -1,6 +1,25 @@
+import { useNavigate } from "react-router-dom"
 import "./Welcome.css"
+import socket from "../../services/socket"
+
+
+
+
 
 function Welcome () {
+
+    const navigate = useNavigate()
+
+    const handleStart = () => {
+    
+        socket.connect()
+
+        navigate("/videoChat")
+    }
+
+
+
+
     return (
         <div className="welcome-page">
             <div className="welcome-card">
@@ -11,7 +30,7 @@ function Welcome () {
                     from anywhere in the world.
                 </p>
 
-                <button>
+                <button onClick={handleStart}>
                     Start Finding Friends
                 </button>
             </div>
